@@ -1,0 +1,11 @@
+spring:
+  main:
+    banner-mode: off
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cities
+    username: postgres
+    password: E15380201
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update

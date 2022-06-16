@@ -1,0 +1,51 @@
+
+type Ranch {
+    id: ID!
+    name: String!
+    description: String
+    city: City
+}
+
+type Municipality {
+    id: ID!
+    name: String!
+    description: String
+    city: City
+}
+
+type City {
+    id: ID!
+    name: String!
+    description: String!
+    municipalies: [Municipality]
+    ranches: [Ranch]
+}
+
+input CreateCityInput {
+    name: String!,
+    description: String
+}
+
+input CreateMunicipalityInput {
+    cityId: String!
+    name: String
+    description: String
+}
+
+input CreateRanchInput {
+    cityId: String!
+    name: String!
+    description: String!
+}
+
+type Query {
+    cities(name: String): [City]!
+    municipalities(name: String): [Municipality]!
+    ranches(name: String) : [Ranch]!
+}
+
+type Mutation {
+    createCity(data: CreateCityInput!) : City!
+    createMunicipality(data: CreateMunicipalityInput): Municipality!
+    createRanch(data: CreateRanchInput) : Ranch!
+}
